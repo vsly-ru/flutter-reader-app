@@ -17,7 +17,7 @@ class HomeController extends GetxController {
     try {
       List<dynamic>? results = await WorkProvider().getWorks();
       if (results != null) {
-        print(results);
+        // print(results);
         List<Work> converted = [];
         for (var i = 0; i < results.length; i++) {
           converted.add(Work.fromJson(results[i]));

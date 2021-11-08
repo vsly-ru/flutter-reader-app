@@ -3,6 +3,7 @@ import 'package:elisbetlee/entrance_fader.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:line_icons/line_icon.dart';
 
 import '../controllers/home_controller.dart';
@@ -97,6 +98,8 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
   List<Widget> re = [];
   for (var i = 0; i < list.length; i++) {
     final Work item = list[i];
+    final String title = item.title ?? '';
+    final finished = GetStorage().read<String>(title) == '1';
     re.add(EntranceFader(
       // delay: Duration(milliseconds: i > 3 ? 4 * 222 : i * 222),
       // duration: Duration(milliseconds: 555),
@@ -108,7 +111,7 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              item.title ?? '',
+              title,
               style: GoogleFonts.robotoSlab(
                 color: Theme.of(context).colorScheme.primary,
                 fontWeight: FontWeight.w200,
@@ -178,9 +181,11 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
                 ),
                 SizedBox(width: 7),
                 Text(
-                  item.time != null && item.time!.isNotEmpty
-                      ? '~' + item.time!
-                      : '',
+                  finished
+                      ? 'Прочитано'
+                      : item.time != null && item.time!.isNotEmpty
+                          ? '~' + item.time!
+                          : '',
                   style: GoogleFonts.roboto(
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 16,

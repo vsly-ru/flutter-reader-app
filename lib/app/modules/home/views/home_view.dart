@@ -101,8 +101,8 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
     final String title = item.title ?? '';
     final finished = GetStorage().read<String>(title) == '1';
     re.add(EntranceFader(
-      // delay: Duration(milliseconds: i > 3 ? 4 * 222 : i * 222),
-      // duration: Duration(milliseconds: 555),
+      delay: Duration(milliseconds: i > 2 ? 3 * 222 : i * 222),
+      duration: Duration(milliseconds: 555),
       child: Container(
         // color: Colors.deepPurple,
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
@@ -110,12 +110,17 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: GoogleFonts.robotoSlab(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.w200,
-                fontSize: 25,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed('/read', arguments: item);
+              },
+              child: Text(
+                title,
+                style: GoogleFonts.robotoSlab(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w200,
+                  fontSize: 25,
+                ),
               ),
             ),
             SizedBox(height: 7),

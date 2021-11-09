@@ -70,23 +70,22 @@ List<Widget> content(BuildContext context, Work work, ReadController c) {
   if (c.lines.isEmpty) return [];
   if (c.lines.length < 2) return [Text(c.lines[0])];
   List<Widget> re = [
-    // Container(
-    //   alignment: Alignment.centerLeft,
-    //   child: IconButton(
-    //     onPressed: () {
-    //       Get.back();
-    //     },
-    //     icon: LineIcon.angleLeft(
-    //         color: Theme.of(context)
-    //             .colorScheme
-    //             .onBackground),
-    //     iconSize: 26,
-    //     padding: EdgeInsets.all(0),
-    //     splashRadius: 22,
-    //     constraints: BoxConstraints.tight(Size(32, 32)),
-    //   ),
-    // ),
-    SizedBox(height: 22),
+    SizedBox(height: 18),
+    Container(
+      alignment: Alignment.centerLeft,
+      child: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: LineIcon.angleLeft(
+            color: Theme.of(context).colorScheme.onBackground),
+        iconSize: 26,
+        padding: EdgeInsets.all(0),
+        splashRadius: 22,
+        constraints: BoxConstraints.tight(Size(32, 32)),
+      ),
+    ),
+    SizedBox(height: 15),
     Row(mainAxisAlignment: MainAxisAlignment.start,
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -168,5 +167,19 @@ List<Widget> content(BuildContext context, Work work, ReadController c) {
     re.add(SizedBox(height: 18));
   }
   re.add(SizedBox(height: 25)); // bottom spacing
+  re.add(Container(
+    alignment: Alignment.centerLeft,
+    child: IconButton(
+      onPressed: () {
+        Get.back();
+      },
+      icon: LineIcon.home(color: Theme.of(context).colorScheme.onBackground),
+      iconSize: 26,
+      padding: EdgeInsets.all(0),
+      splashRadius: 22,
+      constraints: BoxConstraints.tight(Size(32, 32)),
+    ),
+  ));
+  re.add(SizedBox(height: 33)); // bottom spacing
   return re;
 }

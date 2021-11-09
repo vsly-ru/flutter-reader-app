@@ -10,7 +10,7 @@ void main() async {
   await GetStorage.init();
   runApp(
     GetMaterialApp(
-      title: "Application",
+      title: "Работы Елизаветы Ликийской",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: kLightTheme,

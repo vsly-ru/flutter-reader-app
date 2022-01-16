@@ -164,7 +164,7 @@ List<Widget> content(BuildContext context, Work work, ReadController c) {
     } else {
       re.add(container);
     }
-    re.add(SizedBox(height: 18));
+    re.add(SizedBox(height: 14));
   }
   re.add(SizedBox(height: 25)); // bottom spacing
   re.add(Container(

@@ -130,7 +130,9 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
                     color: Theme.of(context).colorScheme.onSurface, size: 16),
                 SizedBox(width: 2),
                 Text(
-                  (item.category != null ? item.category! + ', ' : '') +
+                  (item.category != null
+                          ? item.category! + (item.genre != null ? ', ' : '')
+                          : '') +
                       (item.genre ?? ''),
                   style: GoogleFonts.roboto(
                       color: Theme.of(context).colorScheme.onSurface,
@@ -150,15 +152,17 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
                 ),
               ],
             ),
-            SizedBox(height: 8),
-            Text(
-              item.desctiption ?? '',
-              style: GoogleFonts.roboto(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w300),
-            ),
-            SizedBox(height: 8),
+            SizedBox(height: item.desctiption == null ? 12 : 8),
+            if (item.desctiption != null && item.desctiption!.isNotEmpty)
+              Text(
+                item.desctiption!,
+                style: GoogleFonts.roboto(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300),
+              ),
+            if (item.desctiption != null && item.desctiption!.isNotEmpty)
+              SizedBox(height: 8),
             Row(
               children: [
                 TextButton(
@@ -175,14 +179,14 @@ List<Widget> items(BuildContext context, RxList<Work> list) {
                   ),
                   style: ButtonStyle(
                       minimumSize:
-                          MaterialStateProperty.all<Size>(Size(88, 34)),
+                          MaterialStateProperty.all<Size>(Size(88, 35)),
                       backgroundColor: MaterialStateProperty.all<Color>(
                           Theme.of(context).colorScheme.primary),
                       foregroundColor: MaterialStateProperty.all<Color>(
                           Theme.of(context).colorScheme.onPrimary),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5)))),
+                              borderRadius: BorderRadius.circular(7)))),
                 ),
                 SizedBox(width: 7),
                 Text(
